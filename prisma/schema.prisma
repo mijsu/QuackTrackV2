@@ -1,0 +1,493 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String             @id @default(cuid())
+  uid               String             @unique
+  name              String
+  email             String             @unique
+  personalEmail     String?
+  password          String
+  role              String             @default("faculty")
+  facultyType       String             @default("regular")
+  departmentId      String?
+  contractType      String             @default("full-time")
+  maxUnits          Int                @default(24)
+  specialization    String             @default("[]")
+  image             String?
+  phone             String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  department        Department?        @relation(fields: [departmentId], references: [id])
+  preferences       FacultyPreference?
+  notifications     Notification[]
+  schedules         Schedule[]
+  scheduleLogs      ScheduleLog[]
+  scheduleResponses ScheduleResponse[]
+  auditLogs         AuditLog[]
+  pushSubscriptions PushSubscription[]
+  announcements     Announcement[]
+
+  @@index([email])
+  @@index([role])
+  @@index([facultyType])
+  @@index([departmentId])
+  @@index([personalEmail])
+}
+
+model Department {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  code        String?
+  college     String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  users       User[]
+  programs    Program[]
+  sections    Section[]
+  curricula   Curriculum[]
+}
+
+model Program {
+  id           String       @id @default(cuid())
+  name         String
+  code         String?      @unique
+  description  String?
+  departmentId String
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  subjects   Subject[]
+  sections   Section[]
+  curricula  Curriculum[]
+
+  @@unique([name, departmentId])
+  @@index([departmentId])
+  @@index([isActive])
+}
+
+model Subject {
+  id                     String     @id @default(cuid())
+  subjectCode            String
+  subjectName            String
+  description            String?
+  units                  Int
+  programId              String
+  departmentId           String
+  subjectType            String     @default("regular")
+  yearLevel              Int        @default(1)
+  semester               String     @default("1st Semester")
+  requiredSpecialization String     @default("[]")
+  requiredEquipment      String     @default("[]")
+  defaultDurationHours   Int        @default(3)
+  isActive               Boolean    @default(true)
+  createdAt              DateTime   @default(now())
+  updatedAt              DateTime   @updatedAt
+  schedules              Schedule[]
+  program                Program    @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@unique([subjectCode, programId])
+  @@index([programId])
+  @@index([departmentId])
+  @@index([isActive])
+  @@index([subjectType])
+  @@index([yearLevel])
+  @@index([semester])
+}
+
+model Room {
+  id        String     @id @default(cuid())
+  roomName  String     @unique
+  roomCode  String?
+  capacity  Int
+  equipment String     @default("[]")
+  building  String
+  floor     Int?
+  isActive  Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  schedules Schedule[]
+}
+
+model Section {
+  id           String     @id @default(cuid())
+  sectionName  String     @unique
+  sectionCode  String?
+  classType    String     @default("regular")
+  yearLevel    Int
+  departmentId String
+  programId    String?
+  curriculumId String?
+  studentCount Int
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  schedules    Schedule[]
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  program      Program?   @relation(fields: [programId], references: [id], onDelete: SetNull)
+  curriculum   Curriculum? @relation(fields: [curriculumId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId])
+  @@index([programId])
+  @@index([curriculumId])
+  @@index([classType])
+}
+
+model Schedule {
+  id           String            @id @default(cuid())
+  subjectId    String
+  facultyId    String
+  sectionId    String
+  roomId       String?
+  day          String
+  startTime    String
+  endTime      String
+  status       String            @default("generated")
+  semester     String?
+  academicYear String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  faculty      User              @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  room         Room?             @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  section      Section           @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  subject      Subject           @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  logs         ScheduleLog[]
+  response     ScheduleResponse?
+
+  @@index([facultyId, day, startTime])
+  @@index([roomId, day, startTime])
+  @@index([sectionId, day, startTime])
+}
+
+model ScheduleResponse {
+  id          String    @id @default(cuid())
+  scheduleId  String    @unique
+  facultyId   String
+  status      String    @default("pending")
+  reason      String?
+  respondedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  faculty     User      @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  schedule    Schedule  @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  @@index([facultyId])
+  @@index([status])
+}
+
+model FacultyPreference {
+  id                 String   @id @default(cuid())
+  facultyId          String   @unique
+  preferredDays      String   @default("[]")
+  preferredTimeStart String   @default("08:00")
+  preferredTimeEnd   String   @default("17:00")
+  preferredSubjects  String   @default("[]")
+  unavailableDays    String?
+  notes              String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  faculty            User     @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("info")
+  read      Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+}
+
+model ScheduleLog {
+  id         String   @id @default(cuid())
+  scheduleId String
+  modifiedBy String
+  oldValue   String   @default("{}")
+  newValue   String   @default("{}")
+  action     String
+  reason     String?
+  timestamp  DateTime @default(now())
+  user       User     @relation(fields: [modifiedBy], references: [id], onDelete: Cascade)
+  schedule   Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId])
+  @@index([modifiedBy])
+}
+
+model Conflict {
+  id                  String    @id @default(cuid())
+  type                String
+  scheduleId1         String?
+  scheduleId2         String?
+  description         String
+  severity            String    @default("warning")
+  suggestedResolution String?
+  resolutionOptions   String?   @default("[]")
+  autoResolvable      Boolean   @default(false)
+  resolved            Boolean   @default(false)
+  resolvedBy          String?
+  resolvedAt          DateTime?
+  resolutionAction    String?
+  rollbackData        String?   @default("{}")
+  createdAt           DateTime  @default(now())
+  facultyIds          String?
+  subjectId           String?
+  generationId        String?
+
+  @@index([resolved])
+  @@index([type])
+  @@index([generationId])
+  @@index([severity, resolved])
+}
+
+model AuditLog {
+  id            String   @id @default(cuid())
+  userId        String?
+  action        String
+  entity        String?
+  entityId      String?
+  details       String?  @default("{}")
+  previousState String?  @default("{}")
+  newState      String?  @default("{}")
+  canUndo       Boolean  @default(false)
+  undone        Boolean  @default(false)
+  undoneBy      String?
+  undoneAt      DateTime?
+  undoOfLogId   String?
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime @default(now())
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+  @@index([action, undone])
+}
+
+model SystemSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  category    String   @default("general")
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+}
+
+model ScheduleVersion {
+  id              String   @id @default(cuid())
+  versionName     String
+  description     String?
+  semester        String
+  academicYear    String
+  generatedAt     DateTime @default(now())
+  generatedBy     String
+  stats           String   @default("{}")
+  scheduleCount   Int      @default(0)
+  isActive        Boolean  @default(false)
+  isArchived      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  snapshots       ScheduleSnapshot[]
+
+  @@index([semester, academicYear])
+  @@index([isActive])
+  @@index([generatedAt])
+}
+
+model ScheduleSnapshot {
+  id              String   @id @default(cuid())
+  versionId       String
+  subjectId       String
+  subjectCode     String
+  subjectName     String
+  facultyId       String
+  facultyName     String
+  sectionId       String
+  sectionName     String
+  roomId          String?
+  roomName        String?
+  day             String
+  startTime       String
+  endTime         String
+  status          String
+  score           Float?
+  scoreBreakdown  String?
+  createdAt       DateTime @default(now())
+
+  version         ScheduleVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+
+  @@index([versionId])
+  @@index([facultyId])
+  @@index([subjectId])
+}
+
+model GenerationConfig {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  description     String?
+  weights         String   @default("{}")
+  options         String   @default("{}")
+  isPreset        Boolean  @default(false)
+  isDefault       Boolean  @default(false)
+  createdBy       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([isPreset])
+  @@index([isDefault])
+}
+
+model GenerationSession {
+  id              String   @id @default(cuid())
+  status          String   @default("pending")
+  progress        Int      @default(0)
+  totalTasks      Int      @default(0)
+  assignedCount   Int      @default(0)
+  unassignedCount Int      @default(0)
+  startedAt       DateTime @default(now())
+  completedAt     DateTime?
+  elapsedTimeMs   Int      @default(0)
+  estimatedRemainingMs Int @default(0)
+  error           String?
+  stats           String?
+  createdBy       String
+  versionId       String?
+
+  @@index([status])
+  @@index([startedAt])
+}
+
+model AnalyticsSnapshot {
+  id                      String   @id @default(cuid())
+  snapshotDate            DateTime @default(now())
+  semester                String
+  academicYear            String
+
+  totalSchedules          Int      @default(0)
+  totalFaculty            Int      @default(0)
+  totalSubjects           Int      @default(0)
+  totalSections           Int      @default(0)
+  totalRooms              Int      @default(0)
+
+  totalConflicts          Int      @default(0)
+  criticalConflicts       Int      @default(0)
+  warningConflicts        Int      @default(0)
+  resolvedConflicts       Int      @default(0)
+
+  avgFacultyUtilization   Float    @default(0)
+  overloadedFaculty       Int      @default(0)
+  underloadedFaculty      Int      @default(0)
+  optimalLoadFaculty      Int      @default(0)
+
+  morningClasses          Int      @default(0)
+  afternoonClasses        Int      @default(0)
+  eveningClasses          Int      @default(0)
+
+  dayDistribution         String   @default("{}")
+  roomUtilization         String   @default("{}")
+  departmentStats         String   @default("{}")
+  peakHoursAnalysis       String   @default("{}")
+
+  overallQualityScore     Float    @default(0)
+  preferenceMatchRate     Float    @default(0)
+  loadBalanceScore        Float    @default(0)
+
+  createdAt               DateTime @default(now())
+
+  @@index([snapshotDate])
+  @@index([semester, academicYear])
+  @@unique([semester, academicYear, snapshotDate])
+}
+
+model Curriculum {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  classType    String           @default("regular")
+  departmentId String?
+  programId    String?
+  isActive    Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  department  Department?      @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  program     Program?         @relation(fields: [programId], references: [id], onDelete: SetNull)
+  items       CurriculumItem[]
+  sections    Section[]
+
+  @@unique([name, departmentId])
+  @@index([departmentId])
+  @@index([programId])
+  @@index([isActive])
+}
+
+model CurriculumItem {
+  id            String    @id @default(cuid())
+  curriculumId  String
+  subjectCode   String
+  subjectName   String
+  description   String?
+  units         Int
+  yearLevel     Int       @default(1)
+  semester      String    @default("1st Semester")
+  isComplete    Boolean   @default(false)
+  sortOrder     Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  curriculum    Curriculum @relation(fields: [curriculumId], references: [id], onDelete: Cascade)
+
+  @@index([curriculumId])
+  @@index([isComplete])
+  @@index([yearLevel])
+  @@index([semester])
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  endpoint  String   @unique
+  keys      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Announcement {
+  id             String    @id @default(cuid())
+  title          String
+  message        String
+  type           String    @default("info")
+  priority       String    @default("medium")
+  targetAudience String    @default("all")
+  author         String    @default("System Administrator")
+  authorId       String?
+  pinned         Boolean   @default(false)
+  expiryDate     DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  authorUser     User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([pinned, createdAt])
+  @@index([targetAudience])
+  @@index([priority])
+}
