@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  fullName  String
+  firstName String?
+  middleName String?
+  lastName  String?
+  email     String?
+  role      String   // 'student' or 'admin'
+  studentId String?  @unique // Student ID number (e.g., 2021-00001)
+  year      String?
+  course    String?
+  isFirstLogin Boolean @default(true) // Track if student needs to set up account
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  enrollments   Enrollment[]
+  evaluations   Evaluation[]
+  preRegistered PreRegisteredStudent?
+}
+
+model Faculty {
+  id         String   @id @default(cuid())
+  name       String
+  title      String?  // Prof., Mr., Engr., Dr., etc.
+  department String?
+  email      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  subjects    Subject[]
+  evaluations Evaluation[]
+}
+
+model Subject {
+  id             String   @id @default(cuid())
+  code           String   @unique
+  title          String
+  instructorId   String
+  instructorName String
+  semester       String   @default("1st Semester")
+  schoolYear     String   @default("2024-2025")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relations
+  instructor  Faculty     @relation(fields: [instructorId], references: [id])
+  evaluations Evaluation[]
+}
+
+model Enrollment {
+  id         String   @id @default(cuid())
+  studentId  String
+  subjectIds String   // JSON string array of subject IDs
+  status     String   @default("pending") // 'pending' or 'completed'
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Evaluation {
+  id         String   @id @default(cuid())
+  studentId  String
+  subjectId  String
+  facultyId  String
+  ratings    String   // JSON string of ratings
+  totalScore Float
+  semester   String   @default("1st Semester")
+  schoolYear String   @default("2024-2025")
+  submittedAt DateTime @default(now())
+
+  // Relations
+  student User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject Subject @relation(fields: [subjectId], references: [id])
+  faculty Faculty @relation(fields: [facultyId], references: [id])
+}
+
+model PreRegisteredStudent {
+  id         String   @id @default(cuid())
+  fullName   String?  // Legacy field, can be null
+  firstName  String?
+  middleName String?
+  lastName   String?
+  studentId  String   @unique // Student ID number
+  email      String?
+  temporaryPassword String? // Auto-generated temporary password
+  registered Boolean  @default(false)
+  userId     String?  @unique // Link to User when registered
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id])
+}
+
+model Settings {
+  id               String   @id @default(cuid())
+  evaluationOpen   Boolean  @default(true)
+  currentSemester  String   @default("1st Semester")
+  currentSchoolYear String  @default("2024-2025")
+  updatedAt        DateTime @updatedAt
+}

@@ -1,0 +1,1193 @@
+==========================================
+[2026-03-27 07:38:08] Starting: bun install
+==========================================
+[BUN] Installing dependencies...
+[0.73ms] ".env"
+bun install v1.3.10 (30e609e0)
+
++ @tailwindcss/postcss@4.1.18
++ @types/react@19.2.8
++ @types/react-dom@19.2.3
++ bun-types@1.3.6
++ eslint@9.39.2
++ eslint-config-next@16.1.3
++ tailwindcss@4.1.18
++ tw-animate-css@1.4.0
++ typescript@5.9.3
++ @dnd-kit/core@6.3.1
++ @dnd-kit/sortable@10.0.0
++ @dnd-kit/utilities@3.2.2
++ @hookform/resolvers@5.2.2
++ @mdxeditor/editor@3.52.3
++ @prisma/client@6.19.2
++ @radix-ui/react-accordion@1.2.12
++ @radix-ui/react-alert-dialog@1.1.15
++ @radix-ui/react-aspect-ratio@1.1.8
++ @radix-ui/react-avatar@1.1.11
++ @radix-ui/react-checkbox@1.3.3
++ @radix-ui/react-collapsible@1.1.12
++ @radix-ui/react-context-menu@2.2.16
++ @radix-ui/react-dialog@1.1.15
++ @radix-ui/react-dropdown-menu@2.1.16
++ @radix-ui/react-hover-card@1.1.15
++ @radix-ui/react-label@2.1.8
++ @radix-ui/react-menubar@1.1.16
++ @radix-ui/react-navigation-menu@1.2.14
++ @radix-ui/react-popover@1.1.15
++ @radix-ui/react-progress@1.1.8
++ @radix-ui/react-radio-group@1.3.8
++ @radix-ui/react-scroll-area@1.2.10
++ @radix-ui/react-select@2.2.6
++ @radix-ui/react-separator@1.1.8
++ @radix-ui/react-slider@1.3.6
++ @radix-ui/react-slot@1.2.4
++ @radix-ui/react-switch@1.2.6
++ @radix-ui/react-tabs@1.1.13
++ @radix-ui/react-toast@1.2.15
++ @radix-ui/react-toggle@1.1.10
++ @radix-ui/react-toggle-group@1.1.11
++ @radix-ui/react-tooltip@1.2.8
++ @reactuses/core@6.1.9
++ @tanstack/react-query@5.90.19
++ @tanstack/react-table@8.21.3
++ class-variance-authority@0.7.1
++ clsx@2.1.1
++ cmdk@1.1.1
++ date-fns@4.1.0
++ embla-carousel-react@8.6.0
++ framer-motion@12.26.2
++ input-otp@1.4.2
++ lucide-react@0.525.0
++ next@16.1.3
++ next-auth@4.24.13
++ next-intl@4.7.0
++ next-themes@0.4.6
++ prisma@6.19.2
++ react@19.2.3
++ react-day-picker@9.13.0
++ react-dom@19.2.3
++ react-hook-form@7.71.1
++ react-markdown@10.1.0
++ react-resizable-panels@3.0.6
++ react-syntax-highlighter@15.6.6
++ recharts@2.15.4
++ sharp@0.34.5
++ sonner@2.0.7
++ tailwind-merge@3.4.0
++ tailwindcss-animate@1.0.7
++ uuid@11.1.0
++ vaul@1.1.2
++ z-ai-web-dev-sdk@0.0.17
++ zod@4.3.5
++ zustand@5.0.10
+
+827 packages installed [8.00s]
+==========================================
+[2026-03-27 07:38:16] Completed: bun install
+[LOG] Step: bun install | Duration: 8s
+==========================================
+
+==========================================
+[2026-03-27 07:38:16] Starting: bun run db:push
+==========================================
+[BUN] Setting up database...
+$ prisma db push
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "custom.db" at "file:/home/z/my-project/db/custom.db"
+
+SQLite database custom.db created at file:/home/z/my-project/db/custom.db
+
+🚀  Your database is now in sync with your Prisma schema. Done in 19ms
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.19.2) to ./node_modules/@prisma/client in 82ms
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.2 -> 7.5.0                       │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+==========================================
+[2026-03-27 07:38:17] Completed: bun run db:push
+[LOG] Step: bun run db:push | Duration: 1s
+==========================================
+
+==========================================
+[2026-03-27 07:38:17] Starting: Starting Next.js dev server
+==========================================
+[BUN] Starting development server...
+==========================================
+$ next dev -p 3000 2>&1 | tee dev.log
+[2026-03-27 07:38:17] Completed: Starting Next.js dev server
+[LOG] Step: Starting Next.js dev server | Duration: 0s
+==========================================
+
+==========================================
+[2026-03-27 07:38:17] Starting: Waiting for Next.js dev server
+==========================================
+Waiting for Next.js dev server to be ready on localhost:3000...
+Attempt 1/60: Next.js dev server not ready yet, waiting...
+▲ Next.js 16.1.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://21.0.13.77:3000
+- Environments: .env
+
+✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+  The following mandatory changes were made to your tsconfig.json:
+
+  	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+
+✓ Ready in 919ms
+ GET / 200 in 2.7s (compile: 2.5s, render: 191ms)
+Next.js dev server is ready!
+==========================================
+[2026-03-27 07:38:21] Completed: Waiting for Next.js dev server
+[LOG] Step: Waiting for Next.js dev server | Duration: 4s
+==========================================
+
+==========================================
+ GET / 200 in 2.7s (compile: 2.7s, render: 48ms)
+[2026-03-27 07:38:21] Starting: Health check
+==========================================
+[BUN] Performing health check...
+ GET / 200 in 23ms (compile: 1877µs, render: 21ms)
+[BUN] Health check passed
+==========================================
+[2026-03-27 07:38:21] Completed: Health check
+[LOG] Step: Health check | Duration: 0s
+==========================================
+
+==========================================
+[2026-03-27 07:38:21] Starting: Starting mini-services
+==========================================
+Found mini-services directory, scanning for sub-services...
+Mini-services startup completed. Started 0 service(s).
+==========================================
+[2026-03-27 07:38:21] Completed: Starting mini-services
+[LOG] Step: Starting mini-services | Duration: 0s
+==========================================
+
+Next.js dev server is running in background (PID: 658).
+Use 'kill 658' to stop it.
+ GET / 200 in 61ms (compile: 35ms, render: 26ms)
+ GET / 200 in 16ms (compile: 1890µs, render: 14ms)
+ GET / 200 in 43ms (compile: 2ms, render: 40ms)
+ GET / 200 in 43ms (compile: 27ms, render: 16ms)
+ GET / 200 in 20ms (compile: 2ms, render: 18ms)
+ GET / 200 in 68ms (compile: 43ms, render: 25ms)
+ GET / 200 in 38ms (compile: 25ms, render: 12ms)
+ GET / 200 in 12ms (compile: 1347µs, render: 10ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 1934µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1957µs, render: 14ms)
+ GET / 200 in 19ms (compile: 1710µs, render: 18ms)
+ GET / 200 in 13ms (compile: 1429µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1292µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1857µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1862µs, render: 15ms)
+ GET / 200 in 23ms (compile: 1897µs, render: 21ms)
+ GET / 200 in 11ms (compile: 1401µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1270µs, render: 9ms)
+ GET / 200 in 13ms (compile: 2ms, render: 11ms)
+ GET / 200 in 12ms (compile: 1419µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1516µs, render: 10ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 18ms (compile: 1581µs, render: 16ms)
+ GET / 200 in 12ms (compile: 1493µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1472µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1350µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1396µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1437µs, render: 10ms)
+ GET / 200 in 19ms (compile: 1512µs, render: 18ms)
+ GET / 200 in 12ms (compile: 1381µs, render: 11ms)
+ GET / 200 in 15ms (compile: 4ms, render: 12ms)
+ GET / 200 in 15ms (compile: 1667µs, render: 13ms)
+ GET / 200 in 12ms (compile: 1529µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1397µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1353µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1312µs, render: 11ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 1956µs, render: 14ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 16ms (compile: 1936µs, render: 14ms)
+ GET / 200 in 21ms (compile: 3ms, render: 18ms)
+ GET / 200 in 18ms (compile: 2ms, render: 15ms)
+ GET / 200 in 18ms (compile: 7ms, render: 11ms)
+ GET / 200 in 12ms (compile: 1428µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1392µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1331µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1335µs, render: 10ms)
+ GET / 200 in 15ms (compile: 1395µs, render: 14ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 1951µs, render: 16ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 1952µs, render: 15ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 18ms (compile: 1844µs, render: 16ms)
+ GET / 200 in 13ms (compile: 1663µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1329µs, render: 11ms)
+ GET / 200 in 14ms (compile: 1315µs, render: 13ms)
+ GET / 200 in 12ms (compile: 1461µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1483µs, render: 11ms)
+ GET / 200 in 16ms (compile: 6ms, render: 10ms)
+ GET / 200 in 13ms (compile: 1623µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1348µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1564µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1856µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1352µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1333µs, render: 10ms)
+ GET / 200 in 26ms (compile: 1442µs, render: 25ms)
+ GET / 200 in 12ms (compile: 1615µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1741µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1503µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1315µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1399µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1232µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1377µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1392µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1312µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1395µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1400µs, render: 14ms)
+ GET / 200 in 19ms (compile: 1289µs, render: 18ms)
+ GET / 200 in 12ms (compile: 1336µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1438µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1986µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1508µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1282µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1296µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1390µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1392µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1385µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1761µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1257µs, render: 9ms)
+ GET / 200 in 13ms (compile: 1366µs, render: 11ms)
+ GET / 200 in 27ms (compile: 1562µs, render: 25ms)
+ GET / 200 in 13ms (compile: 1766µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1439µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1394µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1769µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1374µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1474µs, render: 11ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 12ms (compile: 1552µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1797µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1398µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1349µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1765µs, render: 9ms)
+ GET / 200 in 15ms (compile: 1733µs, render: 13ms)
+ GET / 200 in 16ms (compile: 1817µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1970µs, render: 15ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 1918µs, render: 14ms)
+ GET / 200 in 15ms (compile: 1931µs, render: 13ms)
+ GET / 200 in 15ms (compile: 1909µs, render: 13ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 1994µs, render: 14ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 16ms (compile: 1836µs, render: 14ms)
+ GET / 200 in 15ms (compile: 1945µs, render: 13ms)
+ GET / 200 in 19ms (compile: 2ms, render: 17ms)
+ GET / 200 in 27ms (compile: 1853µs, render: 25ms)
+ GET / 200 in 11ms (compile: 1371µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1586µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1319µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1631µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1573µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1371µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1526µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1327µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1385µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1567µs, render: 10ms)
+ GET / 200 in 15ms (compile: 1584µs, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 1894µs, render: 14ms)
+ GET / 200 in 15ms (compile: 1738µs, render: 14ms)
+ GET / 200 in 18ms (compile: 1945µs, render: 16ms)
+ GET / 200 in 16ms (compile: 1918µs, render: 14ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 16ms (compile: 1974µs, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 17ms (compile: 1880µs, render: 15ms)
+ GET / 200 in 35ms (compile: 1953µs, render: 33ms)
+ GET / 200 in 12ms (compile: 1503µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1437µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1395µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1629µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1406µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1472µs, render: 11ms)
+✓ Compiled in 166ms
+✓ Compiled in 306ms
+ GET / 200 in 69ms (compile: 35ms, render: 34ms)
+✓ Compiled in 281ms
+ GET / 200 in 60ms (compile: 35ms, render: 25ms)
+ GET / 200 in 159ms (compile: 10ms, render: 149ms)
+⚠ Cross origin request detected from preview-chat-3ea32e19-3abb-405f-8bc2-b14b171d283c.space.z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ POST /api/auth/login 200 in 1677ms (compile: 1246ms, render: 431ms)
+ GET /api/admin/settings 200 in 493ms (compile: 181ms, render: 312ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 2.1s (compile: 210ms, render: 1883ms)
+ GET / 200 in 57ms (compile: 3ms, render: 53ms)
+ POST /api/auth/login 200 in 297ms (compile: 1817µs, render: 296ms)
+ GET /api/admin/settings 200 in 440ms (compile: 1733µs, render: 438ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 1859ms (compile: 1981µs, render: 1857ms)
+ GET / 200 in 101ms (compile: 47ms, render: 54ms)
+ GET / 200 in 13ms (compile: 1977µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1360µs, render: 10ms)
+ GET / 200 in 17ms (compile: 1930µs, render: 15ms)
+ GET / 200 in 26ms (compile: 3ms, render: 23ms)
+ GET / 200 in 17ms (compile: 1838µs, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 21ms (compile: 1874µs, render: 19ms)
+ GET / 200 in 11ms (compile: 1380µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1453µs, render: 11ms)
+ GET / 200 in 15ms (compile: 1547µs, render: 13ms)
+ GET / 200 in 13ms (compile: 1644µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1717µs, render: 11ms)
+ GET / 200 in 19ms (compile: 1276µs, render: 17ms)
+ GET / 200 in 13ms (compile: 1435µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1300µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1589µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1376µs, render: 15ms)
+ GET / 200 in 17ms (compile: 1893µs, render: 15ms)
+ GET / 200 in 21ms (compile: 2ms, render: 19ms)
+ GET / 200 in 14ms (compile: 1551µs, render: 12ms)
+ GET / 200 in 13ms (compile: 3ms, render: 11ms)
+ GET / 200 in 14ms (compile: 1511µs, render: 12ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 19ms (compile: 1963µs, render: 17ms)
+ GET / 200 in 23ms (compile: 2ms, render: 21ms)
+ GET / 200 in 14ms (compile: 1584µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1391µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1416µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1559µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1369µs, render: 10ms)
+ GET / 200 in 23ms (compile: 1281µs, render: 22ms)
+ GET / 200 in 12ms (compile: 1455µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1355µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1437µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1423µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1556µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1249µs, render: 15ms)
+ GET / 200 in 13ms (compile: 1511µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1437µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1547µs, render: 11ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 13ms (compile: 1651µs, render: 11ms)
+ GET / 200 in 30ms (compile: 1321µs, render: 28ms)
+ GET / 200 in 13ms (compile: 1342µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1445µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1401µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1859µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1322µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1256µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1218µs, render: 9ms)
+ GET / 200 in 15ms (compile: 1434µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1793µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1858µs, render: 14ms)
+ GET / 200 in 18ms (compile: 3ms, render: 15ms)
+ GET / 200 in 19ms (compile: 2ms, render: 17ms)
+ GET / 200 in 16ms (compile: 1854µs, render: 14ms)
+ GET / 200 in 20ms (compile: 1735µs, render: 18ms)
+ GET / 200 in 11ms (compile: 1429µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1375µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1262µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1791µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1387µs, render: 12ms)
+ GET / 200 in 16ms (compile: 1785µs, render: 15ms)
+ GET / 200 in 16ms (compile: 1898µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1897µs, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 20ms (compile: 1873µs, render: 18ms)
+ GET / 200 in 26ms (compile: 2ms, render: 24ms)
+ GET / 200 in 12ms (compile: 1483µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1397µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1341µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1253µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1305µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1322µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1391µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1286µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1464µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1393µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1372µs, render: 10ms)
+ GET / 200 in 18ms (compile: 1340µs, render: 17ms)
+ GET / 200 in 11ms (compile: 1419µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1567µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1455µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1396µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1480µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1349µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1562µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1588µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1321µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1449µs, render: 11ms)
+ GET / 200 in 13ms (compile: 3ms, render: 11ms)
+ GET / 200 in 24ms (compile: 1403µs, render: 23ms)
+ GET / 200 in 13ms (compile: 1319µs, render: 11ms)
+ GET / 200 in 16ms (compile: 6ms, render: 11ms)
+ GET / 200 in 12ms (compile: 1464µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1381µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1323µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1258µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1427µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1357µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1289µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1319µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1304µs, render: 10ms)
+ GET / 200 in 128ms (compile: 3ms, render: 125ms)
+✓ Compiled in 122ms
+✓ Compiled in 121ms
+✓ Compiled in 130ms
+✓ Compiled in 137ms
+✓ Compiled in 123ms
+✓ Compiled in 121ms
+ GET / 200 in 161ms (compile: 47ms, render: 113ms)
+ POST /api/auth/login 200 in 588ms (compile: 162ms, render: 426ms)
+ GET /api/admin/settings 200 in 254ms (compile: 20ms, render: 234ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 1961ms (compile: 20ms, render: 1941ms)
+ GET /api/student/profile?userId=tGEdxKI7At4CvFfrxYiX 200 in 402ms (compile: 163ms, render: 239ms)
+ GET / 200 in 83ms (compile: 50ms, render: 33ms)
+ GET / 200 in 24ms (compile: 2ms, render: 22ms)
+ GET / 200 in 13ms (compile: 1602µs, render: 12ms)
+ GET / 200 in 14ms (compile: 1567µs, render: 12ms)
+ GET / 200 in 19ms (compile: 2ms, render: 17ms)
+ GET / 200 in 12ms (compile: 1528µs, render: 11ms)
+ GET / 200 in 15ms (compile: 1532µs, render: 13ms)
+ GET / 200 in 21ms (compile: 2ms, render: 19ms)
+ GET / 200 in 12ms (compile: 1256µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1269µs, render: 11ms)
+ GET / 200 in 34ms (compile: 1376µs, render: 32ms)
+ GET / 200 in 14ms (compile: 1639µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1398µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1734µs, render: 11ms)
+ GET / 200 in 10ms (compile: 1258µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1273µs, render: 9ms)
+ GET / 200 in 15ms (compile: 1347µs, render: 14ms)
+ GET / 200 in 12ms (compile: 1371µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1186µs, render: 10ms)
+ GET / 200 in 10ms (compile: 1385µs, render: 9ms)
+ GET / 200 in 16ms (compile: 1888µs, render: 14ms)
+ GET / 200 in 19ms (compile: 2ms, render: 16ms)
+ GET / 200 in 18ms (compile: 1703µs, render: 16ms)
+ GET / 200 in 11ms (compile: 1438µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1352µs, render: 10ms)
+ GET / 200 in 15ms (compile: 1308µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1885µs, render: 14ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 22ms (compile: 2ms, render: 20ms)
+ GET / 200 in 15ms (compile: 1446µs, render: 13ms)
+ GET / 200 in 11ms (compile: 1268µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1407µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1859µs, render: 11ms)
+ GET / 200 in 14ms (compile: 4ms, render: 10ms)
+ GET / 200 in 20ms (compile: 1466µs, render: 18ms)
+ GET / 200 in 12ms (compile: 1495µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1480µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1314µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1223µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1526µs, render: 10ms)
+ GET / 200 in 16ms (compile: 1299µs, render: 14ms)
+ GET / 200 in 12ms (compile: 1449µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1391µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1337µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1631µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1332µs, render: 10ms)
+ GET / 200 in 19ms (compile: 1551µs, render: 17ms)
+ GET / 200 in 11ms (compile: 1377µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1365µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1478µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1705µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1298µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1350µs, render: 11ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 16ms (compile: 1898µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1970µs, render: 14ms)
+ GET / 200 in 19ms (compile: 1971µs, render: 17ms)
+ GET / 200 in 17ms (compile: 1941µs, render: 15ms)
+ GET / 200 in 22ms (compile: 1997µs, render: 20ms)
+ GET / 200 in 12ms (compile: 1955µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1414µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1215µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1412µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1330µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1803µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1813µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1799µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1771µs, render: 15ms)
+ GET / 200 in 17ms (compile: 1907µs, render: 15ms)
+ GET / 200 in 36ms (compile: 1929µs, render: 34ms)
+ GET / 200 in 13ms (compile: 1439µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1281µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1138µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1220µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1247µs, render: 9ms)
+ GET / 200 in 13ms (compile: 1679µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1342µs, render: 10ms)
+ GET / 200 in 9ms (compile: 1165µs, render: 8ms)
+ GET / 200 in 11ms (compile: 1314µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1384µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1230µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1670µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1338µs, render: 9ms)
+ GET / 200 in 18ms (compile: 1216µs, render: 16ms)
+ GET / 200 in 10ms (compile: 1281µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1225µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1217µs, render: 10ms)
+ GET / 200 in 11ms (compile: 2ms, render: 9ms)
+ GET / 200 in 11ms (compile: 1127µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1444µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1360µs, render: 10ms)
+ GET / 200 in 14ms (compile: 1513µs, render: 12ms)
+ GET / 200 in 10ms (compile: 1391µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1309µs, render: 9ms)
+ GET / 200 in 18ms (compile: 1210µs, render: 16ms)
+ GET / 200 in 10ms (compile: 1234µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1188µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1195µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1239µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1360µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1223µs, render: 9ms)
+ GET / 200 in 14ms (compile: 1638µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1400µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1373µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1656µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1410µs, render: 10ms)
+ GET / 200 in 26ms (compile: 1314µs, render: 25ms)
+✓ Compiled in 118ms
+ GET / 200 in 84ms (compile: 52ms, render: 33ms)
+ GET / 200 in 22ms (compile: 2ms, render: 20ms)
+ GET / 200 in 12ms (compile: 1615µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1255µs, render: 11ms)
+ GET / 200 in 17ms (compile: 1896µs, render: 15ms)
+ GET / 200 in 18ms (compile: 1622µs, render: 16ms)
+ GET / 200 in 14ms (compile: 1498µs, render: 13ms)
+ GET / 200 in 22ms (compile: 2ms, render: 20ms)
+ GET / 200 in 14ms (compile: 1488µs, render: 13ms)
+ GET / 200 in 14ms (compile: 1511µs, render: 12ms)
+ GET / 200 in 17ms (compile: 1403µs, render: 15ms)
+ GET / 200 in 25ms (compile: 1707µs, render: 23ms)
+ GET / 200 in 14ms (compile: 1686µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1539µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1288µs, render: 10ms)
+ GET / 200 in 15ms (compile: 1544µs, render: 14ms)
+ GET / 200 in 11ms (compile: 1228µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1287µs, render: 9ms)
+ GET / 200 in 21ms (compile: 1530µs, render: 19ms)
+ GET / 200 in 11ms (compile: 1164µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1363µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1314µs, render: 10ms)
+ GET / 200 in 16ms (compile: 1494µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1925µs, render: 15ms)
+ GET / 200 in 20ms (compile: 1847µs, render: 18ms)
+ GET / 200 in 12ms (compile: 1400µs, render: 10ms)
+ GET / 200 in 13ms (compile: 3ms, render: 11ms)
+ GET / 200 in 16ms (compile: 1572µs, render: 14ms)
+ GET / 200 in 20ms (compile: 3ms, render: 17ms)
+ GET / 200 in 17ms (compile: 1937µs, render: 15ms)
+ GET / 200 in 25ms (compile: 1989µs, render: 23ms)
+ GET / 200 in 12ms (compile: 1597µs, render: 11ms)
+ GET / 200 in 15ms (compile: 1307µs, render: 14ms)
+ GET / 200 in 16ms (compile: 1602µs, render: 15ms)
+ GET / 200 in 13ms (compile: 1409µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1479µs, render: 12ms)
+ GET / 200 in 20ms (compile: 1431µs, render: 18ms)
+ GET / 200 in 12ms (compile: 1459µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1210µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1220µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1480µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1184µs, render: 10ms)
+ GET / 200 in 16ms (compile: 1181µs, render: 15ms)
+ GET / 200 in 12ms (compile: 1453µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1370µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1184µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1277µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1580µs, render: 11ms)
+ GET / 200 in 19ms (compile: 1442µs, render: 17ms)
+ GET / 200 in 11ms (compile: 1489µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1387µs, render: 10ms)
+ GET / 200 in 14ms (compile: 1216µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1388µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1490µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1401µs, render: 10ms)
+ GET / 200 in 17ms (compile: 1837µs, render: 15ms)
+ GET / 200 in 18ms (compile: 1977µs, render: 16ms)
+ GET / 200 in 16ms (compile: 1913µs, render: 14ms)
+ GET / 200 in 17ms (compile: 1944µs, render: 15ms)
+ GET / 200 in 22ms (compile: 7ms, render: 15ms)
+ GET / 200 in 23ms (compile: 1780µs, render: 21ms)
+ GET / 200 in 14ms (compile: 1231µs, render: 12ms)
+ GET / 200 in 14ms (compile: 1520µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1443µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1717µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1476µs, render: 11ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 18ms (compile: 1986µs, render: 16ms)
+ GET / 200 in 19ms (compile: 1999µs, render: 17ms)
+ GET / 200 in 17ms (compile: 1793µs, render: 15ms)
+ GET / 200 in 16ms (compile: 1947µs, render: 14ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 13ms (compile: 1505µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1436µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1421µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1209µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1439µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1338µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1490µs, render: 11ms)
+ GET / 200 in 14ms (compile: 1580µs, render: 12ms)
+ GET / 200 in 14ms (compile: 1634µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1370µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1290µs, render: 10ms)
+ GET / 200 in 41ms (compile: 1317µs, render: 39ms)
+ GET / 200 in 13ms (compile: 1347µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1297µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1214µs, render: 10ms)
+ GET / 200 in 10ms (compile: 1289µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1315µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1200µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1326µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1918µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1111µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1172µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1217µs, render: 8ms)
+ GET / 200 in 10ms (compile: 1276µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1489µs, render: 10ms)
+ GET / 200 in 16ms (compile: 1322µs, render: 15ms)
+ GET / 200 in 12ms (compile: 1510µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1277µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1378µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1227µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1126µs, render: 10ms)
+ GET / 200 in 13ms (compile: 1382µs, render: 12ms)
+ GET / 200 in 11ms (compile: 1241µs, render: 10ms)
+ GET / 200 in 11ms (compile: 1401µs, render: 10ms)
+ GET / 200 in 10ms (compile: 1246µs, render: 9ms)
+ GET / 200 in 12ms (compile: 1350µs, render: 11ms)
+ GET / 200 in 28ms (compile: 1246µs, render: 27ms)
+ GET / 200 in 11ms (compile: 1239µs, render: 9ms)
+ GET / 200 in 10ms (compile: 1311µs, render: 9ms)
+ GET / 200 in 11ms (compile: 1289µs, render: 10ms)
+✓ Compiled in 154ms
+ GET /api/admin/settings 200 in 595ms (compile: 152ms, render: 443ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 1888ms (compile: 20ms, render: 1868ms)
+✓ Compiled in 110ms
+ GET /api/admin/settings 200 in 381ms (compile: 1623µs, render: 379ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 1804ms (compile: 1401µs, render: 1802ms)
+✓ Compiled in 112ms
+ GET /api/admin/settings 200 in 398ms (compile: 2ms, render: 396ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 2.0s (compile: 1937µs, render: 2.0s)
+✓ Compiled in 168ms
+ GET /api/admin/settings 200 in 387ms (compile: 1488µs, render: 385ms)
+ GET /api/student/subjects?studentId=tGEdxKI7At4CvFfrxYiX 200 in 1944ms (compile: 1579µs, render: 1943ms)
+ GET / 200 in 191ms (compile: 50ms, render: 140ms)
+ POST /api/auth/login 401 in 599ms (compile: 173ms, render: 426ms)
+ POST /api/auth/login 401 in 271ms (compile: 3ms, render: 269ms)
+ POST /api/auth/login 401 in 261ms (compile: 2ms, render: 259ms)
+ GET / 200 in 32ms (compile: 2ms, render: 30ms)
+ GET / 200 in 41ms (compile: 2ms, render: 38ms)
+ POST /api/auth/login 200 in 255ms (compile: 1684µs, render: 253ms)
+ GET /api/admin/dashboard 200 in 4.7s (compile: 105ms, render: 4.6s)
+ GET /api/admin/pre-registered-students 200 in 345ms (compile: 115ms, render: 230ms)
+ GET /api/admin/students 200 in 374ms (compile: 116ms, render: 258ms)
+ DELETE /api/admin/students?id=tGEdxKI7At4CvFfrxYiX 200 in 1534ms (compile: 1729µs, render: 1532ms)
+ GET /api/admin/students 200 in 231ms (compile: 1836µs, render: 229ms)
+ GET /api/admin/pre-registered-students 200 in 507ms (compile: 9ms, render: 498ms)
+=== EMAIL SENDING ===
+To: jim@gmail.com
+Subject: Your Faculty Evaluation System Account Credentials - CNSC
+HTML: 
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Student Account Credentials</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background: linear-gradient(135deg, #8b1a2b 0%, #6b1520 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1 style="color: white; margin: 0; font-size: 24px;">CAMARINES NORTE STATE COLLEGE</h1>
+        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">College of Trades and Technology</p>
+        <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0; font-size: 14px;">Online Faculty Evaluation System</p>
+      </div>
+      
+      <div style="background: #f9f9f9; padding: 30px; border: 1px solid #ddd; border-top: none;">
+        <h2 style="color: #8b1a2b; margin-top: 0;">Welcome, Mar James Delimios!</h2>
+        
+        <p>You have been pre-registered in the Online Faculty Evaluation System. Below are your login credentials:</p>
+        
+        <div style="background: white; border: 2px solid #8b1a2b; border-radius: 8px; padding: 20px; margin: 20px 0;">
+          <h3 style="margin-top: 0; color: #8b1a2b;">Your Login Credentials</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 40%;">Student ID:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-family: monospace; font-size: 16px; color: #8b1a2b;">22-00376</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold;">Temporary Password:</td>
+              <td style="padding: 10px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: #8b1a2b; letter-spacing: 2px;">YLRTUF</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 15px; margin: 20px 0;">
+          <p style="margin: 0; color: #856404;">
+            <strong>⚠️ Important:</strong> Upon your first login, you will be required to create your own password and complete your profile information.
+          </p>
+        </div>
+        
+        <h3 style="color: #333;">How to Login:</h3>
+        <ol style="padding-left: 20px;">
+          <li>Go to the Online Faculty Evaluation System website</li>
+          <li>Click on "STUDENT" button</li>
+          <li>Enter your <strong>Student ID</strong> as your username</li>
+          <li>Enter your <strong>Temporary Password</strong></li>
+          <li>Follow the prompts to set up your account</li>
+        </ol>
+        
+        <p style="color: #666; font-size: 14px; margin-top: 30px;">
+          If you did not expect this email, please disregard it. For any concerns, please contact your administrator.
+        </p>
+      </div>
+      
+      <div style="background: #333; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px;">
+        <p style="margin: 0;">© 2026 Camarines Norte State College - College of Trades and Technology</p>
+        <p style="margin: 5px 0 0 0; color: rgba(255,255,255,0.7);">This is an automated message. Please do not reply.</p>
+      </div>
+    </body>
+    </html>
+  
+====================
+Error sending email: TypeError: Failed to parse URL from /api/send-email
+    at sendEmail (src/lib/email.ts:36:28)
+    at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+  34 |     // This can be replaced with actual email service integration
+  35 |     
+> 36 |     const response = await fetch('/api/send-email', {
+     |                            ^
+  37 |       method: 'POST',
+  38 |       headers: {
+  39 |         'Content-Type': 'application/json', {
+  [cause]: TypeError: Invalid URL
+      at sendEmail (src/lib/email.ts:36:28)
+      at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+    34 |     // This can be replaced with actual email service integration
+    35 |     
+  > 36 |     const response = await fetch('/api/send-email', {
+       |                            ^
+    37 |       method: 'POST',
+    38 |       headers: {
+    39 |         'Content-Type': 'application/json', {
+    code: 'ERR_INVALID_URL',
+    input: '/api/send-email'
+  }
+}
+Pre-registration created: {
+  studentId: '22-00376',
+  email: 'jim@gmail.com',
+  temporaryPassword: 'YLRTUF',
+  emailSent: true
+}
+ POST /api/admin/pre-registered-students 200 in 1038ms (compile: 3ms, render: 1035ms)
+ GET /api/admin/pre-registered-students 200 in 252ms (compile: 1901µs, render: 250ms)
+ DELETE /api/admin/pre-registered-students?id=kuJ4YX5fpAT9BkKl89wL 200 in 588ms (compile: 4ms, render: 584ms)
+[2026-03-27T09:56:23.577Z]  @firebase/firestore: Firestore (12.11.0): BloomFilter error:  Error [BloomFilterError]: Invalid hash count: 0
+    at ignore-listed frames
+ GET /api/admin/pre-registered-students 200 in 503ms (compile: 1696µs, render: 502ms)
+✓ Compiled in 122ms
+✓ Compiled in 104ms
+✓ Compiled in 106ms
+✓ Compiled in 135ms
+ GET / 200 in 164ms (compile: 48ms, render: 116ms)
+ GET / 200 in 38ms (compile: 2ms, render: 35ms)
+ POST /api/auth/login 200 in 311ms (compile: 4ms, render: 307ms)
+ GET /api/admin/dashboard 200 in 4.4s (compile: 2ms, render: 4.4s)
+ GET /api/admin/students 200 in 255ms (compile: 1773µs, render: 253ms)
+ GET /api/admin/faculty 200 in 490ms (compile: 116ms, render: 374ms)
+ GET /api/admin/pre-registered-students 200 in 516ms (compile: 129ms, render: 387ms)
+=== EMAIL SENDING ===
+To: jim@gmail.com
+Subject: Your Faculty Evaluation System Account Credentials - CNSC
+HTML: 
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Student Account Credentials</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background: linear-gradient(135deg, #8b1a2b 0%, #6b1520 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1 style="color: white; margin: 0; font-size: 24px;">CAMARINES NORTE STATE COLLEGE</h1>
+        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">College of Trades and Technology</p>
+        <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0; font-size: 14px;">Online Faculty Evaluation System</p>
+      </div>
+      
+      <div style="background: #f9f9f9; padding: 30px; border: 1px solid #ddd; border-top: none;">
+        <h2 style="color: #8b1a2b; margin-top: 0;">Welcome, Mar James Delimios!</h2>
+        
+        <p>You have been pre-registered in the Online Faculty Evaluation System. Below are your login credentials:</p>
+        
+        <div style="background: white; border: 2px solid #8b1a2b; border-radius: 8px; padding: 20px; margin: 20px 0;">
+          <h3 style="margin-top: 0; color: #8b1a2b;">Your Login Credentials</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 40%;">Student ID:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-family: monospace; font-size: 16px; color: #8b1a2b;">22-00376</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold;">Temporary Password:</td>
+              <td style="padding: 10px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: #8b1a2b; letter-spacing: 2px;">ULETVC</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 15px; margin: 20px 0;">
+          <p style="margin: 0; color: #856404;">
+            <strong>⚠️ Important:</strong> Upon your first login, you will be required to create your own password and complete your profile information.
+          </p>
+        </div>
+        
+        <h3 style="color: #333;">How to Login:</h3>
+        <ol style="padding-left: 20px;">
+          <li>Go to the Online Faculty Evaluation System website</li>
+          <li>Click on "STUDENT" button</li>
+          <li>Enter your <strong>Student ID</strong> as your username</li>
+          <li>Enter your <strong>Temporary Password</strong></li>
+          <li>Follow the prompts to set up your account</li>
+        </ol>
+        
+        <p style="color: #666; font-size: 14px; margin-top: 30px;">
+          If you did not expect this email, please disregard it. For any concerns, please contact your administrator.
+        </p>
+      </div>
+      
+      <div style="background: #333; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px;">
+        <p style="margin: 0;">© 2026 Camarines Norte State College - College of Trades and Technology</p>
+        <p style="margin: 5px 0 0 0; color: rgba(255,255,255,0.7);">This is an automated message. Please do not reply.</p>
+      </div>
+    </body>
+    </html>
+  
+====================
+Error sending email: TypeError: Failed to parse URL from /api/send-email
+    at sendEmail (src/lib/email.ts:36:28)
+    at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+  34 |     // This can be replaced with actual email service integration
+  35 |     
+> 36 |     const response = await fetch('/api/send-email', {
+     |                            ^
+  37 |       method: 'POST',
+  38 |       headers: {
+  39 |         'Content-Type': 'application/json', {
+  [cause]: TypeError: Invalid URL
+      at sendEmail (src/lib/email.ts:36:28)
+      at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+    34 |     // This can be replaced with actual email service integration
+    35 |     
+  > 36 |     const response = await fetch('/api/send-email', {
+       |                            ^
+    37 |       method: 'POST',
+    38 |       headers: {
+    39 |         'Content-Type': 'application/json', {
+    code: 'ERR_INVALID_URL',
+    input: '/api/send-email'
+  }
+}
+Pre-registration created: {
+  studentId: '22-00376',
+  email: 'jim@gmail.com',
+  temporaryPassword: 'ULETVC',
+  emailSent: true
+}
+ POST /api/admin/pre-registered-students 200 in 1239ms (compile: 3ms, render: 1236ms)
+ GET /api/admin/pre-registered-students 200 in 249ms (compile: 2ms, render: 247ms)
+ POST /api/auth/login 401 in 262ms (compile: 2ms, render: 260ms)
+✓ Compiled in 134ms
+✓ Compiled in 122ms
+ GET / 200 in 150ms (compile: 50ms, render: 100ms)
+ GET / 200 in 27ms (compile: 2ms, render: 24ms)
+ POST /api/auth/login 401 in 286ms (compile: 2ms, render: 284ms)
+ GET / 200 in 32ms (compile: 1816µs, render: 30ms)
+ POST /api/auth/login 401 in 267ms (compile: 1807µs, render: 265ms)
+ GET / 200 in 34ms (compile: 3ms, render: 31ms)
+ POST /api/auth/login 401 in 224ms (compile: 1777µs, render: 222ms)
+ POST /api/auth/login 401 in 236ms (compile: 1748µs, render: 234ms)
+✓ Compiled in 118ms
+ POST /api/auth/login 401 in 285ms (compile: 1771µs, render: 284ms)
+ POST /api/auth/login 401 in 432ms (compile: 1884µs, render: 430ms)
+ GET / 200 in 153ms (compile: 54ms, render: 98ms)
+ POST /api/auth/login 401 in 256ms (compile: 2ms, render: 253ms)
+ GET / 200 in 30ms (compile: 1902µs, render: 28ms)
+ GET / 200 in 31ms (compile: 1815µs, render: 29ms)
+ GET / 200 in 28ms (compile: 1873µs, render: 26ms)
+Login attempt: { role: 'student', username: '22-00376', password: '***' }
+Normalized Student ID: 22-00376
+Existing user by username: not found
+Existing user by studentId: not found
+Pre-registered student: found
+Pre-reg student details: { studentId: '22-00376', tempPassword: 'ULETVC', registered: false }
+Comparing passwords: { provided: 'ULETVC', stored: 'ULETVC', match: true }
+Creating new user for pre-registered student
+New user created: zhV6Uz1Dv6YsuoVDomwK
+Login successful for new user
+ POST /api/auth/login 200 in 1726ms (compile: 142ms, render: 1584ms)
+ POST /api/auth/account-setup 200 in 857ms (compile: 121ms, render: 737ms)
+ GET /api/admin/settings 200 in 538ms (compile: 145ms, render: 393ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 774ms (compile: 164ms, render: 610ms)
+ GET / 200 in 42ms (compile: 2ms, render: 40ms)
+ GET / 200 in 35ms (compile: 2ms, render: 33ms)
+✓ Compiled in 128ms
+ GET /api/admin/settings 200 in 266ms (compile: 1270µs, render: 264ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 294ms (compile: 1844µs, render: 292ms)
+✓ Compiled in 121ms
+ GET /api/admin/settings 200 in 235ms (compile: 1388µs, render: 233ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 254ms (compile: 1217µs, render: 252ms)
+✓ Compiled in 130ms
+ GET /api/admin/settings 200 in 234ms (compile: 1551µs, render: 232ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 256ms (compile: 1415µs, render: 254ms)
+ GET / 200 in 185ms (compile: 56ms, render: 130ms)
+✓ Compiled in 171ms
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 282ms (compile: 1819µs, render: 280ms)
+ GET /api/admin/settings 200 in 283ms (compile: 1187µs, render: 282ms)
+✓ Compiled in 147ms
+✓ Compiled in 166ms
+✓ Compiled in 144ms
+ GET / 200 in 80ms (compile: 48ms, render: 31ms)
+ GET / 200 in 16ms (compile: 1575µs, render: 14ms)
+ GET /api/admin/settings 200 in 273ms (compile: 1660µs, render: 271ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 364ms (compile: 1221µs, render: 363ms)
+ GET / 200 in 102ms (compile: 1844µs, render: 100ms)
+ GET / 200 in 25ms (compile: 1946µs, render: 24ms)
+ GET / 200 in 30ms (compile: 2ms, render: 28ms)
+ POST /api/auth/login 401 in 560ms (compile: 159ms, render: 401ms)
+ GET / 200 in 31ms (compile: 1941µs, render: 29ms)
+ POST /api/auth/login 401 in 301ms (compile: 1618µs, render: 299ms)
+ POST /api/auth/login 200 in 251ms (compile: 1621µs, render: 250ms)
+ GET /api/admin/settings 200 in 290ms (compile: 1659µs, render: 288ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 283ms (compile: 1762µs, render: 281ms)
+✓ Compiled in 165ms
+ GET /api/admin/settings 200 in 287ms (compile: 2ms, render: 285ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 286ms (compile: 1730µs, render: 284ms)
+✓ Compiled in 134ms
+ GET /api/admin/settings 200 in 229ms (compile: 1648µs, render: 228ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 341ms (compile: 3ms, render: 338ms)
+ GET / 200 in 148ms (compile: 53ms, render: 95ms)
+ POST /api/auth/login 200 in 430ms (compile: 2ms, render: 427ms)
+ GET /api/admin/settings 200 in 263ms (compile: 1907µs, render: 261ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 282ms (compile: 1594µs, render: 280ms)
+ GET / 200 in 37ms (compile: 2ms, render: 35ms)
+ GET / 200 in 38ms (compile: 2ms, render: 36ms)
+ GET / 200 in 35ms (compile: 3ms, render: 32ms)
+ GET / 200 in 41ms (compile: 2ms, render: 39ms)
+ POST /api/auth/login 401 in 340ms (compile: 1791µs, render: 339ms)
+ POST /api/auth/login 401 in 300ms (compile: 1694µs, render: 299ms)
+ POST /api/auth/login 401 in 414ms (compile: 1745µs, render: 413ms)
+ GET / 200 in 33ms (compile: 1806µs, render: 31ms)
+ GET / 200 in 38ms (compile: 2ms, render: 36ms)
+✓ Compiled in 212ms
+✓ Compiled in 154ms
+✓ Compiled in 134ms
+✓ Compiled in 125ms
+ GET / 200 in 179ms (compile: 52ms, render: 127ms)
+ GET / 200 in 40ms (compile: 3ms, render: 37ms)
+ POST /api/auth/login 200 in 310ms (compile: 1780µs, render: 309ms)
+ GET /api/admin/settings 200 in 284ms (compile: 1476µs, render: 283ms)
+ GET /api/student/subjects?studentId=zhV6Uz1Dv6YsuoVDomwK 200 in 266ms (compile: 3ms, render: 263ms)
+ POST /api/auth/login 200 in 240ms (compile: 1631µs, render: 239ms)
+ GET /api/admin/dashboard 200 in 4.7s (compile: 136ms, render: 4.6s)
+ GET /api/admin/pre-registered-students 200 in 467ms (compile: 145ms, render: 323ms)
+ DELETE /api/admin/pre-registered-students?id=GF2rjeOytTRWHe15ynyp 200 in 447ms (compile: 1896µs, render: 445ms)
+[2026-03-27T11:16:27.661Z]  @firebase/firestore: Firestore (12.11.0): BloomFilter error:  Error [BloomFilterError]: Invalid hash count: 0
+    at ignore-listed frames
+ GET /api/admin/pre-registered-students 200 in 597ms (compile: 1590µs, render: 596ms)
+ POST /api/auth/login 200 in 304ms (compile: 3ms, render: 301ms)
+ GET /api/admin/dashboard 200 in 4.6s (compile: 1906µs, render: 4.6s)
+ GET /api/admin/pre-registered-students 200 in 226ms (compile: 1705µs, render: 224ms)
+ GET /api/admin/students 200 in 581ms (compile: 163ms, render: 418ms)
+ DELETE /api/admin/students?id=zhV6Uz1Dv6YsuoVDomwK 200 in 1329ms (compile: 3ms, render: 1326ms)
+ GET /api/admin/students 200 in 295ms (compile: 2ms, render: 293ms)
+ GET /api/admin/faculty 200 in 518ms (compile: 142ms, render: 376ms)
+ GET /api/admin/faculty 200 in 331ms (compile: 1632µs, render: 329ms)
+ GET /api/admin/subjects 200 in 2.2s (compile: 115ms, render: 2.1s)
+ GET /api/admin/enrollments 200 in 3.1s (compile: 127ms, render: 3.0s)
+ GET /api/admin/students 200 in 239ms (compile: 2ms, render: 236ms)
+ GET /api/admin/evaluations/list 200 in 3.4s (compile: 107ms, render: 3.3s)
+ GET /api/admin/subjects 200 in 2.1s (compile: 2ms, render: 2.1s)
+ POST /api/auth/login 200 in 385ms (compile: 2ms, render: 383ms)
+ GET /api/admin/dashboard 200 in 4.5s (compile: 9ms, render: 4.5s)
+ GET /api/admin/pre-registered-students 200 in 275ms (compile: 1722µs, render: 273ms)
+=== EMAIL SENDING ===
+To: jim@gmail.com
+Subject: Your Faculty Evaluation System Account Credentials - CNSC
+HTML: 
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Student Account Credentials</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background: linear-gradient(135deg, #8b1a2b 0%, #6b1520 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1 style="color: white; margin: 0; font-size: 24px;">CAMARINES NORTE STATE COLLEGE</h1>
+        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">College of Trades and Technology</p>
+        <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0; font-size: 14px;">Online Faculty Evaluation System</p>
+      </div>
+      
+      <div style="background: #f9f9f9; padding: 30px; border: 1px solid #ddd; border-top: none;">
+        <h2 style="color: #8b1a2b; margin-top: 0;">Welcome, Mar James J Delimios!</h2>
+        
+        <p>You have been pre-registered in the Online Faculty Evaluation System. Below are your login credentials:</p>
+        
+        <div style="background: white; border: 2px solid #8b1a2b; border-radius: 8px; padding: 20px; margin: 20px 0;">
+          <h3 style="margin-top: 0; color: #8b1a2b;">Your Login Credentials</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 40%;">Student ID:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-family: monospace; font-size: 16px; color: #8b1a2b;">22-00376</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold;">Temporary Password:</td>
+              <td style="padding: 10px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: #8b1a2b; letter-spacing: 2px;">XSUJIS</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 15px; margin: 20px 0;">
+          <p style="margin: 0; color: #856404;">
+            <strong>⚠️ Important:</strong> Upon your first login, you will be required to create your own password and complete your profile information.
+          </p>
+        </div>
+        
+        <h3 style="color: #333;">How to Login:</h3>
+        <ol style="padding-left: 20px;">
+          <li>Go to the Online Faculty Evaluation System website</li>
+          <li>Click on "STUDENT" button</li>
+          <li>Enter your <strong>Student ID</strong> as your username</li>
+          <li>Enter your <strong>Temporary Password</strong></li>
+          <li>Follow the prompts to set up your account</li>
+        </ol>
+        
+        <p style="color: #666; font-size: 14px; margin-top: 30px;">
+          If you did not expect this email, please disregard it. For any concerns, please contact your administrator.
+        </p>
+      </div>
+      
+      <div style="background: #333; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px;">
+        <p style="margin: 0;">© 2026 Camarines Norte State College - College of Trades and Technology</p>
+        <p style="margin: 5px 0 0 0; color: rgba(255,255,255,0.7);">This is an automated message. Please do not reply.</p>
+      </div>
+    </body>
+    </html>
+  
+====================
+Error sending email: TypeError: Failed to parse URL from /api/send-email
+    at sendEmail (src/lib/email.ts:36:28)
+    at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+  34 |     // This can be replaced with actual email service integration
+  35 |     
+> 36 |     const response = await fetch('/api/send-email', {
+     |                            ^
+  37 |       method: 'POST',
+  38 |       headers: {
+  39 |         'Content-Type': 'application/json', {
+  [cause]: TypeError: Invalid URL
+      at sendEmail (src/lib/email.ts:36:28)
+      at POST (src/app/api/admin/pre-registered-students/route.ts:89:40)
+    34 |     // This can be replaced with actual email service integration
+    35 |     
+  > 36 |     const response = await fetch('/api/send-email', {
+       |                            ^
+    37 |       method: 'POST',
+    38 |       headers: {
+    39 |         'Content-Type': 'application/json', {
+    code: 'ERR_INVALID_URL',
+    input: '/api/send-email'
+  }
+}
+Pre-registration created: {
+  studentId: '22-00376',
+  email: 'jim@gmail.com',
+  temporaryPassword: 'XSUJIS',
+  emailSent: true
+}
+ POST /api/admin/pre-registered-students 200 in 1158ms (compile: 1608µs, render: 1157ms)
+ GET /api/admin/pre-registered-students 200 in 256ms (compile: 2ms, render: 253ms)
+[2026-03-27T11:20:11.062Z]  @firebase/firestore: Firestore (12.11.0): BloomFilter error:  Error [BloomFilterError]: Invalid hash count: 0
+    at ignore-listed frames
+ POST /api/auth/login 200 in 2.1s (compile: 2ms, render: 2.1s)
+ POST /api/auth/account-setup 200 in 1010ms (compile: 3ms, render: 1007ms)
+ GET /api/admin/settings 200 in 290ms (compile: 2ms, render: 288ms)
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 276ms (compile: 2ms, render: 274ms)
+ GET /api/student/profile?userId=c2hT8xaPNsynVlML2jl3 200 in 556ms (compile: 162ms, render: 394ms)
+ PUT /api/student/profile 200 in 864ms (compile: 2ms, render: 862ms)
+ POST /api/auth/login 200 in 315ms (compile: 1822µs, render: 313ms)
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 267ms (compile: 1904µs, render: 265ms)
+ GET /api/admin/settings 200 in 464ms (compile: 1742µs, render: 462ms)
+ GET /api/student/profile?userId=c2hT8xaPNsynVlML2jl3 200 in 268ms (compile: 5ms, render: 263ms)
+✓ Compiled in 156ms
+ GET /api/admin/settings 200 in 259ms (compile: 3ms, render: 256ms)
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 249ms (compile: 1502µs, render: 247ms)
+ GET /api/admin/settings 200 in 359ms (compile: 1565µs, render: 357ms)
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 344ms (compile: 1555µs, render: 343ms)
+✓ Compiled in 119ms
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 227ms (compile: 1430µs, render: 226ms)
+ GET /api/admin/settings 200 in 204ms (compile: 1190µs, render: 203ms)
+ GET /api/student/subjects?studentId=c2hT8xaPNsynVlML2jl3 200 in 191ms (compile: 1137µs, render: 190ms)
+ GET /api/admin/settings 200 in 191ms (compile: 1158µs, render: 190ms)
+ GET / 200 in 173ms (compile: 52ms, render: 121ms)
+ POST /api/auth/login 200 in 339ms (compile: 1884µs, render: 337ms)
+ GET /api/admin/dashboard 200 in 4.3s (compile: 1569µs, render: 4.3s)
+ GET /api/admin/pre-registered-students 200 in 260ms (compile: 2ms, render: 257ms)
+ DELETE /api/admin/pre-registered-students?id=9O7OcOPeayQeKB2WfbxT 200 in 494ms (compile: 5ms, render: 489ms)
+[2026-03-27T11:26:41.766Z]  @firebase/firestore: Firestore (12.11.0): BloomFilter error:  Error [BloomFilterError]: Invalid hash count: 0
+    at ignore-listed frames
+ GET /api/admin/pre-registered-students 200 in 667ms (compile: 2ms, render: 665ms)
+ GET /api/admin/students 200 in 288ms (compile: 1893µs, render: 286ms)
+✓ Compiled in 132ms
+ GET /api/admin/students 200 in 252ms (compile: 1669µs, render: 251ms)
+✓ Compiled in 125ms
+ GET /api/admin/students 200 in 241ms (compile: 1971µs, render: 239ms)
+✓ Compiled in 193ms
+✓ Compiled in 140ms
+ GET / 200 in 206ms (compile: 58ms, render: 149ms)
+ POST /api/auth/login 200 in 304ms (compile: 1876µs, render: 302ms)
+ GET /api/admin/dashboard 200 in 4.5s (compile: 2ms, render: 4.5s)
+ GET /api/admin/students 200 in 250ms (compile: 1605µs, render: 249ms)
+ GET /api/admin/faculty 200 in 286ms (compile: 4ms, render: 282ms)
+✓ Compiled in 135ms
+ GET /api/admin/students 200 in 267ms (compile: 1790µs, render: 265ms)
+✓ Compiled in 142ms
+ GET /api/admin/students 200 in 246ms (compile: 1721µs, render: 244ms)
+✓ Compiled in 129ms
+ GET /api/admin/faculty 200 in 264ms (compile: 2ms, render: 261ms)
+✓ Compiled in 135ms
+ GET /api/admin/faculty 200 in 231ms (compile: 1510µs, render: 229ms)
+✓ Compiled in 137ms
+ GET /api/admin/students 200 in 259ms (compile: 1764µs, render: 257ms)
+✓ Compiled in 130ms
+ GET /api/admin/faculty 200 in 242ms (compile: 1577µs, render: 240ms)
+ GET / 200 in 217ms (compile: 67ms, render: 150ms)
