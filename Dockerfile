@@ -32,19 +32,17 @@ COPY package*.json ./
 # Install production dependencies only
 RUN npm install --production --legacy-peer-deps && npm cache clean --force
 
-# Copy built app from builder
+# Copy node_modules and built app from builder  
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
 
-# Copy startup script
-COPY start.sh /app/
-RUN chmod +x /app/start.sh
-
 # Expose port
 EXPOSE 3000
 
-# Use dumb-init and run via npm start which has proper PORT handling
+# Use dumb-init and run the standalone server with PORT handling
 ENTRYPOINT ["/sbin/dumb-init", "--"]
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
+ENV PORT=3000
