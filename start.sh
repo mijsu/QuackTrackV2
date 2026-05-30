@@ -1,11 +1,10 @@
 #!/bin/sh
 set -e
-echo "Starting QuackTrack..."
+echo "🚀 Starting QuackTrack server..."
 if [ -z "$DATABASE_URL" ]; then
-  echo "ERROR: DATABASE_URL not set"
+  echo "❌ ERROR: DATABASE_URL not set!"
   exit 1
 fi
-echo "Syncing database..."
-npx prisma db push --skip-generate --accept-data-loss || true
-echo "Starting server..."
+echo "✅ DATABASE_URL configured"
+echo "🔧 Starting Next.js server on port 3000..."
 exec node server.js
