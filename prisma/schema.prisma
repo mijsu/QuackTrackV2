@@ -1,0 +1,354 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  uid               String   @unique
+  name              String
+  email             String   @unique
+  personalEmail     String?
+  password          String
+  role              String   // admin, department_dean, program_head, human_resource, registrar, faculty
+  facultyType       String?  // regular, masteral
+  departmentId      String?
+  contractType      String?  // full_time, part_time, casual, permanent
+  maxUnits          Int      @default(21)
+  specialization    String?
+  status            String   @default("active") // active, under_observation, paused
+  image             String?
+  phone             String?
+  mustChangePassword Boolean @default(false)
+  isActivated       Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  department          Department?             @relation(fields: [departmentId], references: [id])
+  schedules           Schedule[]
+  preferences         FacultyPreference[]
+  notifications       Notification[]
+  auditLogs           AuditLog[]
+  scheduleResponses   ScheduleResponse[]
+  announcements       Announcement[]          @relation("AnnouncementAuthor")
+  publishedVersions   ScheduleVersion[]       @relation("ScheduleVersionPublisher")
+  scheduleLogs        ScheduleLog[]
+
+  @@index([role])
+  @@index([status])
+  @@index([departmentId])
+}
+
+model Department {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  college   String?
+  classType String   @default("regular") // regular, executive
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users     User[]
+  programs  Program[]
+  subjects  Subject[]
+  sections  Section[]
+}
+
+model Program {
+  id           String   @id @default(cuid())
+  name         String
+  code         String   @unique
+  description  String?
+  departmentId String
+  classType    String   @default("regular") // regular, executive, both
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  department Department @relation(fields: [departmentId], references: [id])
+  subjects   Subject[]
+  sections   Section[]
+
+  @@index([departmentId])
+  @@index([isActive])
+}
+
+model Subject {
+  id                     String   @id @default(cuid())
+  subjectCode            String   @unique
+  subjectName            String
+  description            String?
+  units                  Int
+  programId              String
+  departmentId           String
+  subjectType            String   @default("lecture") // lecture, lab, seminar, lecture_and_lab
+  classType              String   @default("regular") // regular, executive, both
+  yearLevel              Int      @default(1)
+  semester               String   @default("1st") // 1st, 2nd, 3rd, summer
+  requiredSpecialization String?
+  requiredEquipment      String?
+  defaultDurationHours   Float    @default(1.5)
+  lectureHours           Float    @default(0) // hours per week for lecture (0 if none)
+  labHours               Float    @default(0) // hours per week for lab (0 if none)
+  isActive               Boolean  @default(true)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  program     Program    @relation(fields: [programId], references: [id])
+  department  Department @relation(fields: [departmentId], references: [id])
+  schedules   Schedule[]
+
+  @@index([programId])
+  @@index([departmentId])
+  @@index([isActive])
+  @@index([semester])
+  @@index([yearLevel])
+}
+
+model Section {
+  id           String   @id @default(cuid())
+  sectionName  String
+  yearLevel    Int
+  semester     String   @default("1st") // 1st, 2nd, 3rd, summer
+  programId    String
+  departmentId String
+  classType    String   @default("regular") // regular, executive, both
+  population   Int      @default(40)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  program     Program    @relation(fields: [programId], references: [id])
+  department  Department @relation(fields: [departmentId], references: [id])
+  schedules   Schedule[]
+
+  @@index([programId])
+  @@index([departmentId])
+  @@index([isActive])
+  @@index([semester])
+}
+
+model Schedule {
+  id                String   @id @default(cuid())
+  day               String   // Mon, Tue, Wed, Thu, Fri, Sat
+  startTime         String   // e.g., "07:30"
+  endTime           String   // e.g., "09:00"
+  subjectId         String
+  facultyId         String
+  roomId            String?
+  sectionId         String
+  scheduleVersionId String
+  status            String   @default("initial") // initial, finalized
+  mergedWith        String?  // comma-separated schedule IDs for merged classes
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  subject          Subject         @relation(fields: [subjectId], references: [id])
+  faculty          User            @relation(fields: [facultyId], references: [id])
+  section          Section         @relation(fields: [sectionId], references: [id])
+  scheduleVersion  ScheduleVersion @relation(fields: [scheduleVersionId], references: [id])
+  conflicts1       Conflict[]      @relation("ConflictSchedule1")
+  conflicts2       Conflict[]      @relation("ConflictSchedule2")
+
+  @@index([day])
+  @@index([facultyId])
+  @@index([sectionId])
+  @@index([subjectId])
+  @@index([scheduleVersionId])
+  @@index([status])
+}
+
+model ScheduleVersion {
+  id                  String    @id @default(cuid())
+  name                String
+  description         String?
+  semester            String    @default("1st") // 1st, 2nd, 3rd, summer
+  academicYear        String
+  status              String    @default("draft") // draft, published, archived
+  generationSessionId String?
+  publishedAt         DateTime?
+  publishedBy         String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  generationSession GenerationSession? @relation(fields: [generationSessionId], references: [id])
+  publisher         User?              @relation("ScheduleVersionPublisher", fields: [publishedBy], references: [id])
+  schedules         Schedule[]
+  scheduleResponses ScheduleResponse[]
+
+  @@index([status])
+  @@index([semester])
+  @@index([academicYear])
+  @@index([generationSessionId])
+}
+
+model ScheduleLog {
+  id         String   @id @default(cuid())
+  action     String   // created, updated, deleted, published, archived
+  details    String?
+  scheduleId String?
+  userId     String
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([scheduleId])
+  @@index([action])
+}
+
+model ScheduleResponse {
+  id                String   @id @default(cuid())
+  scheduleVersionId String
+  facultyId         String
+  response          String   // accepted, rejected, pending
+  comments          String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  scheduleVersion ScheduleVersion @relation(fields: [scheduleVersionId], references: [id])
+  faculty         User            @relation(fields: [facultyId], references: [id])
+
+  @@index([scheduleVersionId])
+  @@index([facultyId])
+  @@index([response])
+}
+
+model FacultyPreference {
+  id                   String   @id @default(cuid())
+  facultyId            String
+  preferredDays        String?  // comma-separated day names
+  preferredTimeStart   String?
+  preferredTimeEnd     String?
+  unavailableDays      String?
+  unavailableTimeSlots String?  // JSON string for complex slots
+  preferredSubjects    String?  // comma-separated subject IDs
+  maxUnitsOverride     Int?
+  notes                String?
+  semester             String   @default("1st")
+  academicYear         String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  faculty User @relation(fields: [facultyId], references: [id])
+
+  @@index([facultyId])
+  @@index([semester])
+  @@index([academicYear])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("info") // info, warning, success, error
+  isRead    Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+}
+
+model Announcement {
+  id        String    @id @default(cuid())
+  title     String
+  content   String
+  priority  String    @default("normal") // urgent, high, normal, low
+  isActive  Boolean   @default(true)
+  authorId  String?
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  author User? @relation("AnnouncementAuthor", fields: [authorId], references: [id])
+
+  @@index([isActive])
+  @@index([priority])
+  @@index([authorId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  details   String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([entity])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model GenerationSession {
+  id               String    @id @default(cuid())
+  name             String
+  status           String    @default("pending") // pending, running, completed, failed
+  configId         String?
+  semester         String    @default("1st") // 1st, 2nd, 3rd, summer
+  academicYear     String
+  totalSchedules   Int       @default(0)
+  conflictCount    Int       @default(0)
+  score            Float?
+  startedAt        DateTime?
+  completedAt      DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  config           GenerationConfig? @relation(fields: [configId], references: [id])
+  scheduleVersions ScheduleVersion[]
+
+  @@index([status])
+  @@index([configId])
+  @@index([semester])
+  @@index([academicYear])
+}
+
+model GenerationConfig {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  config      String   // JSON string with generation parameters
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  generationSessions GenerationSession[]
+
+  @@index([isDefault])
+}
+
+model Conflict {
+  id          String    @id @default(cuid())
+  type        String    // faculty_overlap, section_overlap, specialization_mismatch
+  severity    String    @default("error") // error, warning
+  scheduleId1 String
+  scheduleId2 String?
+  details     String?
+  isResolved  Boolean   @default(false)
+  resolvedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  schedule1 Schedule  @relation("ConflictSchedule1", fields: [scheduleId1], references: [id])
+  schedule2 Schedule? @relation("ConflictSchedule2", fields: [scheduleId2], references: [id])
+
+  @@index([type])
+  @@index([severity])
+  @@index([isResolved])
+  @@index([scheduleId1])
+  @@index([scheduleId2])
+}

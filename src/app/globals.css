@@ -1,0 +1,382 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ─── Light Mode (default) ─────────────────────────────────────────────────── */
+:root {
+  --radius: 0.75rem;
+  --background: #EDF2F7;
+  --foreground: #1A202C;
+  --card: #F7FAFC;
+  --card-foreground: #1A202C;
+  --popover: #F7FAFC;
+  --popover-foreground: #1A202C;
+  --primary: #10B981;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E2E8F0;
+  --secondary-foreground: #1A202C;
+  --muted: #E2E8F0;
+  --muted-foreground: #718096;
+  --accent: #E2E8F0;
+  --accent-foreground: #059669;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #CBD5E1;
+  --input: #CBD5E1;
+  --ring: #10B981;
+  --chart-1: #10B981;
+  --chart-2: #059669;
+  --chart-3: #34D399;
+  --chart-4: #718096;
+  --chart-5: #E2E8F0;
+  --sidebar: #F7FAFC;
+  --sidebar-foreground: #1A202C;
+  --sidebar-primary: #10B981;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E2E8F0;
+  --sidebar-accent-foreground: #059669;
+  --sidebar-border: #CBD5E1;
+  --sidebar-ring: #10B981;
+}
+
+/* ─── System Preference Dark Mode ───────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #030304;
+    --foreground: #FFFFFF;
+    --card: #0F1115;
+    --card-foreground: #FFFFFF;
+    --popover: #0F1115;
+    --popover-foreground: #FFFFFF;
+    --primary: #10B981;
+    --primary-foreground: #030304;
+    --secondary: #1E293B;
+    --secondary-foreground: #FFFFFF;
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    --accent: #1E293B;
+    --accent-foreground: #10B981;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #10B981;
+    --chart-1: #10B981;
+    --chart-2: #059669;
+    --chart-3: #34D399;
+    --chart-4: #94A3B8;
+    --chart-5: #1E293B;
+    --sidebar: #0A0B0E;
+    --sidebar-foreground: #FFFFFF;
+    --sidebar-primary: #10B981;
+    --sidebar-primary-foreground: #030304;
+    --sidebar-accent: #1E293B;
+    --sidebar-accent-foreground: #10B981;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: #10B981;
+  }
+}
+
+/* ─── Dark Mode (user preference override) ─────────────────────────────────── */
+.dark {
+  --background: #030304;
+  --foreground: #FFFFFF;
+  --card: #0F1115;
+  --card-foreground: #FFFFFF;
+  --popover: #0F1115;
+  --popover-foreground: #FFFFFF;
+  --primary: #10B981;
+  --primary-foreground: #030304;
+  --secondary: #1E293B;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #1E293B;
+  --accent-foreground: #10B981;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #10B981;
+  --chart-1: #10B981;
+  --chart-2: #059669;
+  --chart-3: #34D399;
+  --chart-4: #94A3B8;
+  --chart-5: #1E293B;
+  --sidebar: #0A0B0E;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #10B981;
+  --sidebar-primary-foreground: #030304;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #10B981;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #10B981;
+}
+
+/* ─── Light Mode (user preference override) ────────────────────────────────── */
+.light {
+  --background: #EDF2F7;
+  --foreground: #1A202C;
+  --card: #F7FAFC;
+  --card-foreground: #1A202C;
+  --popover: #F7FAFC;
+  --popover-foreground: #1A202C;
+  --primary: #10B981;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E2E8F0;
+  --secondary-foreground: #1A202C;
+  --muted: #E2E8F0;
+  --muted-foreground: #718096;
+  --accent: #E2E8F0;
+  --accent-foreground: #059669;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #CBD5E1;
+  --input: #CBD5E1;
+  --ring: #10B981;
+  --chart-1: #10B981;
+  --chart-2: #059669;
+  --chart-3: #34D399;
+  --chart-4: #718096;
+  --chart-5: #E2E8F0;
+  --sidebar: #F7FAFC;
+  --sidebar-foreground: #1A202C;
+  --sidebar-primary: #10B981;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E2E8F0;
+  --sidebar-accent-foreground: #059669;
+  --sidebar-border: #CBD5E1;
+  --sidebar-ring: #10B981;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Typography — Emerald font families */
+  .font-heading {
+    font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-body {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  /* Blockchain grid pattern — signature background */
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image:
+      linear-gradient(to right, var(--grid-line-color, rgba(30, 41, 59, 0.5)) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color, rgba(30, 41, 59, 0.5)) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  .dark .bg-grid-pattern {
+    --grid-line-color: rgba(30, 41, 59, 0.5);
+  }
+
+  :root:not(.dark) .bg-grid-pattern {
+    --grid-line-color: rgba(226, 232, 240, 0.8);
+  }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Custom polished scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.25) transparent;
+  }
+  .custom-scrollbar:hover {
+    scrollbar-color: rgba(16, 185, 129, 0.4) transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.25);
+    border-radius: 999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.4);
+  }
+
+  /* Emerald glow — primary accent */
+  .glow-emerald {
+    box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.5);
+  }
+
+  /* Mint glow — secondary accent */
+  .glow-mint {
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+  }
+
+  /* Gradient text — Emerald to Mint */
+  .text-gradient-emerald {
+    background: linear-gradient(to right, #10B981, #34D399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient text — Deep Emerald to Emerald (forest) */
+  .text-gradient-forest {
+    background: linear-gradient(to right, #059669, #10B981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom scrollbar for lists */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb, rgba(255, 255, 255, 0.1));
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover, rgba(255, 255, 255, 0.2));
+  }
+
+  /* Horizontal scrollbar always visible when content overflows */
+  .custom-scrollbar {
+    scrollbar-color: var(--scrollbar-thumb, rgba(255, 255, 255, 0.1)) transparent;
+    scrollbar-width: thin;
+  }
+
+  .dark .custom-scrollbar {
+    --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+  }
+
+  :root:not(.dark) .custom-scrollbar {
+    --scrollbar-thumb: rgba(0, 0, 0, 0.1);
+    --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Hide sidebar scrollbar but keep scroll functionality */
+[data-slot="sidebar-content"] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+[data-slot="sidebar-content"]::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ─── Theme-aware chart tooltip ──────────────────────────────────────────── */
+.chart-tooltip {
+  @apply rounded-lg p-3 shadow-lg border;
+  background-color: var(--card);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* ─── PWA / Fullscreen / Zen Mode ────────────────────────────────────────── */
+
+/* Prevent overscroll/bounce on mobile when in fullscreen or PWA */
+html, body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide mobile browser chrome when in PWA fullscreen mode */
+@media (display-mode: fullscreen) {
+  body {
+    /* Prevent pull-to-refresh and overscroll */
+    overscroll-behavior-y: contain;
+  }
+}
+
+/* Smooth safe-area handling for notched devices */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Zen mode transitions */
+.zen-enter {
+  animation: zenFadeIn 0.2s ease-out;
+}
+@keyframes zenFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Marquee animation for long text ───────────────────────────────────── */
+@keyframes marquee {
+  0%, 15% { transform: translateX(0); }
+  70% { transform: translateX(calc(-100% + 12rem)); }
+  85%, 100% { transform: translateX(0); }
+}
+
+.hover\:animate-marquee:hover {
+  animation: marquee 5s ease-in-out;
+}
