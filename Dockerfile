@@ -38,14 +38,16 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
 
+# Copy startup script
+COPY start.sh /app/
+RUN chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 3000
 
 # Use dumb-init to run Node.js
 ENTRYPOINT ["/sbin/dumb-init", "--"]
 
-# Start the app
-CMD ["node", "server.js"]
-
-# Start the app
+# Start the app with migration script
+CMD ["/app/start.sh"]
 CMD ["node", "server.js"]
