@@ -45,8 +45,8 @@ RUN chmod +x /app/start.sh
 # Expose port
 EXPOSE 3000
 
-# Use dumb-init to run the startup script
+# Use dumb-init to run Node with proper PORT handling
 ENTRYPOINT ["/sbin/dumb-init", "--"]
 
-# Start the app with migration script
-CMD ["sh", "/app/start.sh"]
+# Start the server with PORT environment variable support
+CMD ["sh", "-c", "PORT=${PORT:-3000} node /app/server.js"]
