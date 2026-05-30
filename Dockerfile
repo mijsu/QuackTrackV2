@@ -45,8 +45,6 @@ RUN chmod +x /app/start.sh
 # Expose port
 EXPOSE 3000
 
-# Use dumb-init to run Node with proper PORT handling
+# Use dumb-init and run via npm start which has proper PORT handling
 ENTRYPOINT ["/sbin/dumb-init", "--"]
-
-# Start the server with PORT environment variable support
-CMD ["sh", "-c", "PORT=${PORT:-3000} node /app/server.js"]
+CMD ["npm", "start"]
