@@ -3,8 +3,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies
-RUN npm ci --legacy-peer-deps
+# Copy package files first
+COPY package*.json ./
+
+# Install dependencies (npm install for better compatibility with bun projects)
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
@@ -23,8 +26,11 @@ WORKDIR /app
 # Install dumb-init to handle signals properly
 RUN apk add --no-cache dumb-init
 
+# Copy package files
+COPY package*.json ./
+
 # Install production dependencies only
-RUN npm ci --only=production --legacy-peer-deps && npm cache clean --force
+RUN npm install --production --legacy-peer-deps && npm cache clean --force
 
 # Copy built app from builder
 COPY --from=builder /app/.next/standalone ./
@@ -37,6 +43,9 @@ EXPOSE 3000
 
 # Use dumb-init to run Node.js
 ENTRYPOINT ["/sbin/dumb-init", "--"]
+
+# Start the app
+CMD ["node", "server.js"]
 
 # Start the app
 CMD ["node", "server.js"]
