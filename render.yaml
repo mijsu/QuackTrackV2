@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: quacktrack-v2
+    env: node
+    region: oregon
+    plan: standard
+    branch: main
+
+    # ─── IMPORTANT: Use npm, NOT bun ───────────────────────────────────────────
+    # Render auto-detects Bun and uses it by default, but Next.js 16's server
+    # does NOT work with Bun's runtime — it hangs at "Starting..." and never
+    # reaches "Ready". These commands explicitly use npm/node to avoid this.
+    buildCommand: npm install --legacy-peer-deps && npx prisma generate && npm run build
+    startCommand: npm start
+
+    # Health Check — lightweight endpoint that doesn't need DB
+    healthCheckPath: /api/health
+
+    # Auto-deploy
+    autoDeploy: true
+
+    # Environment Variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: quacktrack
+          property: connectionString
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+
+databases:
+  - name: quacktrack
+    plan: standard
